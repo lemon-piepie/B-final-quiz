@@ -7,7 +7,6 @@ import com.example.demo.Repository.TraineeRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -23,14 +22,17 @@ public class TraineeService {
         return EntityToDAO.fromEntityList(traineeList);
     }
 
-    public EntityToDAO addNewTrainee(DAOtoEntity request) {
-        Trainee trainee = DAOtoEntity.toEntity(request);
+    public EntityToDAO addNewTrainee(DAOtoEntity message) {
+        Trainee trainee = DAOtoEntity.toEntity(message);
         Trainee save = traineeRepository.save(trainee);
         return EntityToDAO.fromEntity(save);
     }
 
     public void deleteTraineeById(Long id) {
-        traineeRepository.deleteById(id);
+        if (traineeRepository.findOneById(id).isPresent()) {
+            traineeRepository.deleteById(id);
+        } else {
+            throw new Error("该用户不存在");
+        }
     }
-
 }
