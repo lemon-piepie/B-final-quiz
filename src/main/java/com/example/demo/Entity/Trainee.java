@@ -1,5 +1,6 @@
 package com.example.demo.Entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 import javax.persistence.Entity;
@@ -17,7 +18,8 @@ import javax.validation.constraints.Email;
 @Entity
 public class Trainee {
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @JsonProperty("traineeId")
     private Long id;
     private String name;
     private String office;
