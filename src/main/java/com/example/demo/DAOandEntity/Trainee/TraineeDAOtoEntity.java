@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class DAOtoEntity {
+public class TraineeDAOtoEntity {
     private String name;
 
     private String office;
@@ -21,7 +21,7 @@ public class DAOtoEntity {
 
     private String zoomId;
 
-    public static Trainee toEntity(DAOtoEntity message) {
+    public static Trainee toEntity(TraineeDAOtoEntity message) {
         return Trainee.builder()
                 .name(message.getName())
                 .github(message.getGithub())

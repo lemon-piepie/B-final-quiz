@@ -1,7 +1,7 @@
 package com.example.demo.Service;
 
-import com.example.demo.DAOandEntity.Trainee.DAOtoEntity;
-import com.example.demo.DAOandEntity.Trainee.EntityToDAO;
+import com.example.demo.DAOandEntity.Trainee.TraineeDAOtoEntity;
+import com.example.demo.DAOandEntity.Trainee.TraineeEntityToDAO;
 import com.example.demo.Entity.Trainee;
 import com.example.demo.Repository.TraineeRepository;
 import org.springframework.stereotype.Service;
@@ -17,15 +17,15 @@ public class TraineeService {
     public TraineeService(TraineeRepository traineeRepository) {
         this.traineeRepository = traineeRepository;
     }
-    public List<EntityToDAO> getAllTrainees() {
+    public List<TraineeEntityToDAO> getAllTrainees() {
         List<Trainee> traineeList = traineeRepository.findAll();
-        return EntityToDAO.fromEntityList(traineeList);
+        return TraineeEntityToDAO.fromEntityList(traineeList);
     }
 
-    public EntityToDAO addNewTrainee(DAOtoEntity message) {
-        Trainee trainee = DAOtoEntity.toEntity(message);
+    public TraineeEntityToDAO addNewTrainee(TraineeDAOtoEntity message) {
+        Trainee trainee = TraineeDAOtoEntity.toEntity(message);
         Trainee save = traineeRepository.save(trainee);
-        return EntityToDAO.fromEntity(save);
+        return TraineeEntityToDAO.fromEntity(save);
     }
 
     public void deleteTraineeById(Long id) {

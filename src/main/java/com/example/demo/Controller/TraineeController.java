@@ -1,6 +1,6 @@
 package com.example.demo.Controller;
 
-import com.example.demo.DAOandEntity.Trainee.DAOtoEntity;
+import com.example.demo.DAOandEntity.Trainee.TraineeDAOtoEntity;
 import com.example.demo.Service.TraineeService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +21,7 @@ public class TraineeController {
 
     @PostMapping("/trainees")
     @ResponseStatus(HttpStatus.CREATED)
-    public Object addNewTrainee (@RequestBody DAOtoEntity trainee) {
+    public Object addNewTrainee (@RequestBody TraineeDAOtoEntity trainee) {
         return traineeService.addNewTrainee(trainee);
     }
 

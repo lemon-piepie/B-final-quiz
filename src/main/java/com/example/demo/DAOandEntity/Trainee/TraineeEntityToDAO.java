@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class EntityToDAO {
+public class TraineeEntityToDAO {
     private Long id;
 
     private String name;
@@ -26,9 +26,9 @@ public class EntityToDAO {
 
     private String zoomId;
 
-    public static EntityToDAO fromEntity(Trainee trainee) {
+    public static TraineeEntityToDAO fromEntity(Trainee trainee) {
 
-        return EntityToDAO.builder()
+        return TraineeEntityToDAO.builder()
                 .id(trainee.getId())
                 .name(trainee.getName())
                 .github(trainee.getGithub())
@@ -38,9 +38,9 @@ public class EntityToDAO {
                 .build();
     }
 
-    public static List<EntityToDAO> fromEntityList(List<Trainee> trainees) {
+    public static List<TraineeEntityToDAO> fromEntityList(List<Trainee> trainees) {
         return trainees.stream()
-                .map(EntityToDAO::fromEntity)
+                .map(TraineeEntityToDAO::fromEntity)
                 .collect(Collectors.toList());
     }
 }
