@@ -19,6 +19,7 @@ import javax.validation.constraints.Email;
 public class Trainee {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    //TODO GTB：不需要特别命名，已经在entity Trainee下了，id可以明确表示是Trainee下了的id
     @JsonProperty("traineeId")
     private Long id;
     private String name;
